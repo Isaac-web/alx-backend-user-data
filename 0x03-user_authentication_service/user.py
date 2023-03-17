@@ -1,24 +1,26 @@
 #!/usr/bin/env python3
 """
-This module contains the User model for the
-users table in the database
+Declare a SQLAlchemy model named 'User' corresponding to a
+database table named "users"
 """
-import sqlalchemy as s
-from sqlalchemy.orm import declarative_base
-
+from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy import (
+    Column,
+    Integer,
+    String,
+)
 
 Base = declarative_base()
 
 
 class User(Base):
     """
-    Defines the User model for the users table
+    Definition of class User
     """
     __tablename__ = "users"
 
-    id = s.Column(s.Integer, primary_key=True)
-    username = s.Column(s.String(250), nullable=False)
-    email = s.Column(s.String(250), nullable=False)
-    hashed_password = s.Column(s.String(250), nullable=False)
-    session_id = s.Column(s.String(250), nullable=True)
-    reset_token = s.Column(s.String(250), nullable=True)
+    id = Column(Integer, primary_key=True)
+    email = Column(String(250), nullable=False)
+    hashed_password = Column(String(250), nullable=False)
+    session_id = Column(String(250), nullable=True)
+    reset_token = Column(String(250), nullable=True)
